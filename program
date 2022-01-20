@@ -1,0 +1,92 @@
+version=https://pastebin.com/raw/vtp9BihK
+file-url=https://pastebin.com/raw/EtQSVYAw
+
+Code:
+
+
+
+import os
+from tkinter import *
+import time
+import wget
+import datetime
+from colorama import Fore, Back, Style
+
+#root setup
+root = Tk()
+root.title("Drive")
+root.attributes("-alpha", 0.7)
+root.iconbitmap("icon.ico")
+
+#frame setup
+frame_0=Frame(root, bg="#0003b3", height=29, width=400)
+frame_0.grid(row=0, column=0)
+frame_1=Frame(root, bg="#0003b3", height=29, width=400)
+frame_1.grid(row=1, column=0)
+frame_2=Frame(root, bg="#0003b3", height=29, width=400)
+frame_2.grid(row=2, column=0)
+
+#button functions
+def Download_1():
+
+    #Version updater
+    url = 'https://pastebin.com/raw/vtp9BihK'
+    version = wget.download(url)
+    print(" ")
+    os.system('cmd /c "ren vtp9BihK version.txt"')
+    f = open("version.txt")
+    version_file = f.read()
+    f.close()
+    print(Fore.LIGHTYELLOW_EX)
+    print(version_file)
+    print(Fore.BLUE)
+    time.sleep(1)
+    os.system('cmd /c "del version.txt"')
+    #Main code
+    url = 'https://pastebin.com/raw/EtQSVYAw'
+    IDname = wget.download(url)
+    print("Server ID: (" + IDname + ")")
+    time_begin = datetime.datetime.now()
+    print("Download started at: " + str(time_begin))
+    os.system('cmd /c "ren EtQSVYAw link.txt"')
+    time.sleep(1)
+    f = open("link.txt")
+    link2 = f.read()
+    f.close()
+    os.system('cmd /c "del link.txt"')
+    filename = wget.download(link2, "Download_map")
+    print("")
+    print("Download path: " + filename)
+    time.sleep(1)
+    time.sleep(1)
+    time_end = datetime.datetime.now()
+    print("Download Completed at: " + str(time_end))
+    print(Fore.LIGHTGREEN_EX)
+    print("Download time was: " + str(time_end - time_begin))
+    print(Fore.BLUE)
+    print("Opening destination folder...")
+    os.system('cmd /c "start Download_map"')
+    print(Fore.LIGHTGREEN_EX)
+    print("Task complete!")
+    print(" ")
+    print(" ")
+
+def openfolder():
+    os.system('cmd /c "start Download_map"')
+    print(Fore.BLUE)
+    print("Opened folder successfully!")
+
+def exit_program():
+    root.quit()
+
+#button setup
+knop_een = Button(root, text="Download", padx=20, pady=1, border=0, bg="#1e1e1e", fg="white", activebackground="#1e1e1e", activeforeground="#000000", command=Download_1)
+knop_een.grid(row=0, column=0)
+map_open = Button(root, text="Open Folder", padx=20, pady=1, border=0, bg="#1e1e1e", fg="white", activebackground="#1e1e1e", activeforeground="#000000", command=openfolder)
+map_open.grid(row=1, column=0)
+exit_self = Button(root, text="Exit", padx=20, pady=1, border=0, bg="#1e1e1e", fg="white", activebackground="#1e1e1e", activeforeground="#000000", command=exit_program)
+exit_self.grid(row=2, column=0)
+
+
+
+root.mainloop()
