@@ -1,4 +1,5 @@
 version=https://pastebin.com/raw/vtp9BihK
+manifest-url=https://pastebin.com/raw/2zxLCQfY
 file-url=https://pastebin.com/raw/EtQSVYAw
 
 Code:
@@ -26,10 +27,9 @@ frame_1.grid(row=1, column=0)
 frame_2=Frame(root, bg="#0003b3", height=29, width=400)
 frame_2.grid(row=2, column=0)
 
-#button functions
+#button functions (first code block is version updater, second is manifest updater, third is downloading the file.
 def Download_1():
 
-    #Version updater
     url = 'https://pastebin.com/raw/vtp9BihK'
     version = wget.download(url)
     print(" ")
@@ -42,7 +42,19 @@ def Download_1():
     print(Fore.BLUE)
     time.sleep(1)
     os.system('cmd /c "del version.txt"')
-    #Main code
+
+    url = 'https://pastebin.com/raw/2zxLCQfY'
+    manifest = wget.download(url)
+    os.system('cmd /c "ren 2zxLCQfY manifest.txt"')
+    f = open("manifest.txt")
+    manifest_file = f.read()
+    f.close()
+    print(Fore.LIGHTGREEN_EX)
+    print(manifest_file)
+    print(Fore.BLUE)
+    time.sleep(1)
+    os.system('cmd /c "del manifest.txt"')
+
     url = 'https://pastebin.com/raw/EtQSVYAw'
     IDname = wget.download(url)
     print("Server ID: (" + IDname + ")")
